@@ -14,7 +14,6 @@ use App\Models\EthicsPolicy;
 use App\Models\Appointment;
 use App\Models\DoctorAvailability;
 use  \Firebase\JWT\JWT;
-
 class Api extends ResourceController
 {
     use ResponseTrait;
