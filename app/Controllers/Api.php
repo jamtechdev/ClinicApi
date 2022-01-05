@@ -375,7 +375,7 @@ class Api extends ResourceController
             return $this->respondCreated($response);
         }
         $rules = [
-            "status"    => "required",
+            "status"    => "required"
         ];
         $messages = [
             "status" => [
@@ -686,7 +686,7 @@ class Api extends ResourceController
                 $response = [
                     'status' => 200,
                     "error" => false,
-                    'messages' => 'Approved, staff leave !',
+                    'messages' => 'Successfully, Change leave status !',
                     'data' => $leaves
                 ];
                 return $this->respondCreated($response);
@@ -694,7 +694,7 @@ class Api extends ResourceController
                 $response = [
                     'status' => 500,
                     "error" => true,
-                    'messages' => 'Failed to approved leave !',
+                    'messages' => 'Failed to change leave status !',
                 ];
             }
         }
@@ -1110,7 +1110,7 @@ class Api extends ResourceController
             'status'   => 200,
             'error'    => null,
             'messages' => [
-                'success' => 'All clinic papers successfully deleted'
+                'success' => 'Successfully deleted'
             ]
         ];
         return $this->respondDeleted($response);
@@ -1328,7 +1328,7 @@ class Api extends ResourceController
                 $response = [
                     'status' => 200,
                     "error" => false,
-                    'messages' => 'Approved, appointment status !',
+                    'messages' => 'Successfully change appointment status !',
                     'data' => $appointmentStatus
                 ];
                 return $this->respondCreated($response);
@@ -1336,7 +1336,7 @@ class Api extends ResourceController
                 $response = [
                     'status' => 500,
                     "error" => true,
-                    'messages' => 'Failed to approve appointment status !',
+                    'messages' => 'Failed to change appointment status !',
                 ];
             }
         }
@@ -1509,46 +1509,4 @@ class Api extends ResourceController
         return $this->respondCreated($response);
     }
 
-
-
- 
-
-
-
-
-
-
-
-    public function upload_img(){
-        $colors = array('red', 'blue', 'green', 'yellow');
-        print_r($colors); 
-        foreach ($colors as $color) {
-            // echo "Do you like $color?\n";
-            $color = strtoupper($color);
-        }
-        unset($color);
-        /*$array = array(
-            "foo" => "bar",
-            42    => 24,
-            "multi" => array(
-                 "dimensional" => array(
-                     "array" => "foo"
-                 )
-            )
-        );
-
-        print_r($array["foo"]);
-        print_r($array[42]);
-        print_r($array["multi"]["dimensional"]["array"]);*/
-
-
-        $file=$this->request->getFile('leave_img');
-        $newName = $file->getRandomName();
-        $uploadPath = $file->move(WRITEPATH.'/uploads',$newName);
-        $StaffLeaves = new StaffLeaves();
-                $data = [
-                    "leave_img"        => $newName
-                ];
-        $StaffLeaves->insert($data);
-    }
 }
