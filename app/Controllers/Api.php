@@ -415,7 +415,7 @@ class Api extends ResourceController
                 $response = [
                     'status' => 500,
                     "error" => true,
-                    'messages' => 'Failed to update status!',
+                    'messages' => 'ID not found',
                 ];
             }
         }
